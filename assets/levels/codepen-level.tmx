@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="25" height="17" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#ffaa00" nextobjectid="672">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="25" height="17" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#ffffff" nextobjectid="672">
  <tileset firstgid="1" name="pacman-tiles" tilewidth="32" tileheight="32" tilecount="20" columns="5">
   <image source="../images/background.png" width="160" height="128"/>
   <tile id="0">
