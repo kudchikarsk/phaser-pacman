@@ -224,11 +224,12 @@ function respawn() {
 }
 
 function reset() {
+    respawn();
     for (let child of pills.getChildren()) {
             child.enableBody(false, child.x, child.y, true, true);
         }
     pillsAte=0;
-    respawn();
+    
 }
 
 function newGame() {
