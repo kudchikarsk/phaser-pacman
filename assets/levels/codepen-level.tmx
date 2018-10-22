@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="25" height="17" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#ffffff" nextobjectid="672">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="25" height="18" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#ffffff" nextobjectid="911">
  <tileset firstgid="1" name="pacman-tiles" tilewidth="32" tileheight="32" tilecount="20" columns="5">
   <image source="../images/background.png" width="160" height="128"/>
   <tile id="0">
@@ -87,13 +87,204 @@
     <property name="collides" type="bool" value="true"/>
    </properties>
   </tile>
+  <tile id="19">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
  </tileset>
- <layer name="Walls" width="25" height="17">
+ <layer name="Layer 2" width="25" height="18" visible="0">
   <data encoding="base64">
-   BwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAACAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAIAAAADAAAACgAAAAMAAAAEAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAGAAAAAAAAAAIAAAADAAAAAwAAAAMAAAADAAAAAwAAAA4AAAADAAAABAAAAAAAAAALAAAAAAAAAAIAAAADAAAADgAAAAMAAAADAAAAAwAAAAMAAAADAAAABAAAAAAAAAAGAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAwAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAA0AAAA=
+   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAUAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   </data>
  </layer>
- <objectgroup name="Objects" visible="0">
-  <object id="650" name="Player" gid="19" x="384" y="384" width="32" height="32"/>
+ <layer name="Layer 1" width="25" height="18">
+  <data encoding="base64">
+   BwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAACgAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAACAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAGAAAAAAAAAAIAAAADAAAABAAAAAAAAAACAAAAAwAAAAMAAAADAAAABAAAAAAAAAALAAAAAAAAAAIAAAADAAAAAwAAAAMAAAAEAAAAAAAAAAIAAAADAAAABAAAAAAAAAAGAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAYAAAAAAAAABwAAAAMAAAAIAAAAAAAAAAEAAAAAAAAAAgAAAAMAAAADAAAAAwAAAAoAAAADAAAAAwAAAAMAAAAEAAAAAAAAAAEAAAAAAAAABwAAAAMAAAAIAAAAAAAAAAYAAAAGAAAAAAAAAAwAAAADAAAADQAAAAAAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAAwAAAADAAAADQAAAAAAAAAGAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQAAAAMAAAADAAAAAwAAAAQAAAAAAAAACwAAAAAAAAACAAAAAwAAAAMAAAADAAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAwAAAADAAAAAwAAAAMAAAAIAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAABwAAAAMAAAADAAAAAwAAAA0AAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAAAAGAAAAAAAAAAcAAAADAAAABAAAABMAAAATAAAAEwAAAAIAAAADAAAACAAAAAAAAAAGAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAMAAAADAAAAAwAAAA0AAAAAAAAACwAAAAAAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAACwAAAAAAAAAMAAAAAwAAAAMAAAADAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAwAAAAMAAAADAAAACAAAAAAAAAABAAAAAAAAAAwAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAADQAAAAAAAAABAAAAAAAAAAcAAAADAAAAAwAAAAMAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAcAAAADAAAAAwAAAAMAAAANAAAAAAAAAAsAAAAAAAAAAQAAAAAAAAACAAAAAwAAAAoAAAADAAAABAAAAAAAAAABAAAAAAAAAAsAAAAAAAAADAAAAAMAAAADAAAAAwAAAAgAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAABgAAAAAAAAACAAAAAwAAAAMAAAADAAAAAwAAAAMAAAAOAAAAAwAAAAQAAAAAAAAACwAAAAAAAAACAAAAAwAAAA4AAAADAAAAAwAAAAMAAAADAAAAAwAAAAQAAAAAAAAABgAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAMAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAANAAAA
+  </data>
+ </layer>
+ <objectgroup name="Objects">
+  <object id="650" name="Player" gid="19" x="384" y="416" width="32" height="32"/>
+  <object id="675" name="Pill" gid="18" x="32" y="64" width="32" height="32"/>
+  <object id="676" name="Pill" gid="18" x="32" y="96" width="32" height="32"/>
+  <object id="677" name="Pill" gid="18" x="32" y="128" width="32" height="32"/>
+  <object id="678" name="Pill" gid="18" x="32" y="160" width="32" height="32"/>
+  <object id="679" name="Pill" gid="18" x="32" y="192" width="32" height="32"/>
+  <object id="680" name="Pill" gid="18" x="32" y="224" width="32" height="32"/>
+  <object id="681" name="Pill" gid="18" x="64" y="224" width="32" height="32"/>
+  <object id="682" name="Pill" gid="18" x="96" y="224" width="32" height="32"/>
+  <object id="683" name="Pill" gid="18" x="128" y="224" width="32" height="32"/>
+  <object id="684" name="Pill" gid="18" x="160" y="224" width="32" height="32"/>
+  <object id="685" name="Pill" gid="18" x="160" y="192" width="32" height="32"/>
+  <object id="686" name="Pill" gid="18" x="160" y="160" width="32" height="32"/>
+  <object id="687" name="Pill" gid="18" x="160" y="128" width="32" height="32"/>
+  <object id="688" name="Pill" gid="18" x="128" y="128" width="32" height="32"/>
+  <object id="689" name="Pill" gid="18" x="96" y="128" width="32" height="32"/>
+  <object id="690" name="Pill" gid="18" x="64" y="128" width="32" height="32"/>
+  <object id="691" name="Pill" gid="18" x="64" y="64" width="32" height="32"/>
+  <object id="692" name="Pill" gid="18" x="96" y="64" width="32" height="32"/>
+  <object id="693" name="Pill" gid="18" x="128" y="64" width="32" height="32"/>
+  <object id="694" name="Pill" gid="18" x="160" y="64" width="32" height="32"/>
+  <object id="695" name="Pill" gid="18" x="160" y="256" width="32" height="32"/>
+  <object id="696" name="Pill" gid="18" x="160" y="288" width="32" height="32"/>
+  <object id="697" name="Pill" gid="18" x="160" y="320" width="32" height="32"/>
+  <object id="698" name="Pill" gid="18" x="160" y="352" width="32" height="32"/>
+  <object id="699" name="Pill" gid="18" x="160" y="384" width="32" height="32"/>
+  <object id="700" name="Pill" gid="18" x="160" y="416" width="32" height="32"/>
+  <object id="701" name="Pill" gid="18" x="160" y="448" width="32" height="32"/>
+  <object id="702" name="Pill" gid="18" x="192" y="480" width="32" height="32"/>
+  <object id="703" name="Pill" gid="18" x="160" y="480" width="32" height="32"/>
+  <object id="704" name="Pill" gid="18" x="128" y="480" width="32" height="32"/>
+  <object id="705" name="Pill" gid="18" x="96" y="480" width="32" height="32"/>
+  <object id="706" name="Pill" gid="18" x="64" y="480" width="32" height="32"/>
+  <object id="707" name="Pill" gid="18" x="32" y="480" width="32" height="32"/>
+  <object id="708" name="Pill" gid="18" x="32" y="512" width="32" height="32"/>
+  <object id="709" name="Pill" gid="18" x="32" y="544" width="32" height="32"/>
+  <object id="710" name="Pill" gid="18" x="64" y="544" width="32" height="32"/>
+  <object id="711" name="Pill" gid="18" x="96" y="544" width="32" height="32"/>
+  <object id="712" name="Pill" gid="18" x="128" y="544" width="32" height="32"/>
+  <object id="713" name="Pill" gid="18" x="160" y="544" width="32" height="32"/>
+  <object id="714" name="Pill" gid="18" x="192" y="544" width="32" height="32"/>
+  <object id="715" name="Pill" gid="18" x="224" y="544" width="32" height="32"/>
+  <object id="716" name="Pill" gid="18" x="256" y="544" width="32" height="32"/>
+  <object id="717" name="Pill" gid="18" x="288" y="544" width="32" height="32"/>
+  <object id="718" name="Pill" gid="18" x="320" y="544" width="32" height="32"/>
+  <object id="719" name="Pill" gid="18" x="352" y="544" width="32" height="32"/>
+  <object id="720" name="Pill" gid="18" x="352" y="512" width="32" height="32"/>
+  <object id="721" name="Pill" gid="18" x="352" y="512" width="32" height="32"/>
+  <object id="722" name="Pill" gid="18" x="352" y="480" width="32" height="32"/>
+  <object id="723" name="Pill" gid="18" x="320" y="480" width="32" height="32"/>
+  <object id="724" name="Pill" gid="18" x="288" y="480" width="32" height="32"/>
+  <object id="725" name="Pill" gid="18" x="288" y="448" width="32" height="32"/>
+  <object id="726" name="Pill" gid="18" x="288" y="416" width="32" height="32"/>
+  <object id="727" name="Pill" gid="18" x="224" y="416" width="32" height="32"/>
+  <object id="774" name="Pill" gid="18" x="224" y="448" width="32" height="32"/>
+  <object id="775" name="Pill" gid="18" x="224" y="480" width="32" height="32"/>
+  <object id="777" name="Pill" gid="18" x="256" y="416" width="32" height="32"/>
+  <object id="778" name="Pill" gid="18" x="192" y="64" width="32" height="32"/>
+  <object id="779" name="Pill" gid="18" x="224" y="64" width="32" height="32"/>
+  <object id="780" name="Pill" gid="18" x="256" y="64" width="32" height="32"/>
+  <object id="781" name="Pill" gid="18" x="256" y="64" width="32" height="32"/>
+  <object id="782" name="Pill" gid="18" x="288" y="64" width="32" height="32"/>
+  <object id="783" name="Pill" gid="18" x="320" y="64" width="32" height="32"/>
+  <object id="784" name="Pill" gid="18" x="352" y="64" width="32" height="32"/>
+  <object id="785" name="Pill" gid="18" x="352" y="96" width="32" height="32"/>
+  <object id="786" name="Pill" gid="18" x="352" y="128" width="32" height="32"/>
+  <object id="787" name="Pill" gid="18" x="320" y="128" width="32" height="32"/>
+  <object id="788" name="Pill" gid="18" x="288" y="128" width="32" height="32"/>
+  <object id="789" name="Pill" gid="18" x="256" y="128" width="32" height="32"/>
+  <object id="790" name="Pill" gid="18" x="224" y="128" width="32" height="32"/>
+  <object id="791" name="Pill" gid="18" x="192" y="128" width="32" height="32"/>
+  <object id="792" name="Pill" gid="18" x="224" y="160" width="32" height="32"/>
+  <object id="793" name="Pill" gid="18" x="224" y="192" width="32" height="32"/>
+  <object id="794" name="Pill" gid="18" x="256" y="192" width="32" height="32"/>
+  <object id="795" name="Pill" gid="18" x="288" y="192" width="32" height="32"/>
+  <object id="796" name="Pill" gid="18" x="320" y="192" width="32" height="32"/>
+  <object id="797" name="Pill" gid="18" x="352" y="192" width="32" height="32"/>
+  <object id="798" name="Pill" gid="18" x="352" y="224" width="32" height="32"/>
+  <object id="799" name="Pill" gid="18" x="416" y="224" width="32" height="32"/>
+  <object id="800" name="Pill" gid="18" x="416" y="192" width="32" height="32"/>
+  <object id="801" name="Pill" gid="18" x="448" y="192" width="32" height="32"/>
+  <object id="802" name="Pill" gid="18" x="480" y="192" width="32" height="32"/>
+  <object id="803" name="Pill" gid="18" x="512" y="192" width="32" height="32"/>
+  <object id="804" name="Pill" gid="18" x="544" y="192" width="32" height="32"/>
+  <object id="805" name="Pill" gid="18" x="544" y="160" width="32" height="32"/>
+  <object id="806" name="Pill" gid="18" x="544" y="128" width="32" height="32"/>
+  <object id="807" name="Pill" gid="18" x="512" y="128" width="32" height="32"/>
+  <object id="808" name="Pill" gid="18" x="480" y="128" width="32" height="32"/>
+  <object id="809" name="Pill" gid="18" x="448" y="128" width="32" height="32"/>
+  <object id="810" name="Pill" gid="18" x="416" y="128" width="32" height="32"/>
+  <object id="811" name="Pill" gid="18" x="384" y="128" width="32" height="32"/>
+  <object id="812" name="Pill" gid="18" x="416" y="96" width="32" height="32"/>
+  <object id="813" name="Pill" gid="18" x="416" y="64" width="32" height="32"/>
+  <object id="814" name="Pill" gid="18" x="448" y="64" width="32" height="32"/>
+  <object id="815" name="Pill" gid="18" x="480" y="64" width="32" height="32"/>
+  <object id="816" name="Pill" gid="18" x="512" y="64" width="32" height="32"/>
+  <object id="817" name="Pill" gid="18" x="544" y="64" width="32" height="32"/>
+  <object id="818" name="Pill" gid="18" x="576" y="64" width="32" height="32"/>
+  <object id="819" name="Pill" gid="18" x="608" y="64" width="32" height="32"/>
+  <object id="820" name="Pill" gid="18" x="608" y="96" width="32" height="32"/>
+  <object id="821" name="Pill" gid="18" x="608" y="128" width="32" height="32"/>
+  <object id="822" name="Pill" gid="18" x="608" y="160" width="32" height="32"/>
+  <object id="823" name="Pill" gid="18" x="608" y="192" width="32" height="32"/>
+  <object id="824" name="Pill" gid="18" x="608" y="224" width="32" height="32"/>
+  <object id="825" name="Pill" gid="18" x="608" y="256" width="32" height="32"/>
+  <object id="826" name="Pill" gid="18" x="608" y="288" width="32" height="32"/>
+  <object id="827" name="Pill" gid="18" x="608" y="320" width="32" height="32"/>
+  <object id="828" name="Pill" gid="18" x="608" y="352" width="32" height="32"/>
+  <object id="829" name="Pill" gid="18" x="608" y="384" width="32" height="32"/>
+  <object id="830" name="Pill" gid="18" x="608" y="416" width="32" height="32"/>
+  <object id="831" name="Pill" gid="18" x="608" y="448" width="32" height="32"/>
+  <object id="832" name="Pill" gid="18" x="608" y="480" width="32" height="32"/>
+  <object id="833" name="Pill" gid="18" x="576" y="480" width="32" height="32"/>
+  <object id="834" name="Pill" gid="18" x="544" y="480" width="32" height="32"/>
+  <object id="835" name="Pill" gid="18" x="544" y="448" width="32" height="32"/>
+  <object id="836" name="Pill" gid="18" x="544" y="416" width="32" height="32"/>
+  <object id="837" name="Pill" gid="18" x="512" y="416" width="32" height="32"/>
+  <object id="838" name="Pill" gid="18" x="480" y="416" width="32" height="32"/>
+  <object id="839" name="Pill" gid="18" x="448" y="416" width="32" height="32"/>
+  <object id="840" name="Pill" gid="18" x="416" y="416" width="32" height="32"/>
+  <object id="841" name="Pill" gid="18" x="640" y="64" width="32" height="32"/>
+  <object id="842" name="Pill" gid="18" x="672" y="64" width="32" height="32"/>
+  <object id="843" name="Pill" gid="18" x="704" y="64" width="32" height="32"/>
+  <object id="844" name="Pill" gid="18" x="736" y="64" width="32" height="32"/>
+  <object id="845" name="Pill" gid="18" x="736" y="96" width="32" height="32"/>
+  <object id="846" name="Pill" gid="18" x="736" y="128" width="32" height="32"/>
+  <object id="847" name="Pill" gid="18" x="704" y="128" width="32" height="32"/>
+  <object id="848" name="Pill" gid="18" x="672" y="128" width="32" height="32"/>
+  <object id="849" name="Pill" gid="18" x="640" y="128" width="32" height="32"/>
+  <object id="850" name="Pill" gid="18" x="736" y="160" width="32" height="32"/>
+  <object id="851" name="Pill" gid="18" x="736" y="192" width="32" height="32"/>
+  <object id="852" name="Pill" gid="18" x="736" y="224" width="32" height="32"/>
+  <object id="853" name="Pill" gid="18" x="704" y="224" width="32" height="32"/>
+  <object id="854" name="Pill" gid="18" x="672" y="224" width="32" height="32"/>
+  <object id="855" name="Pill" gid="18" x="640" y="224" width="32" height="32"/>
+  <object id="856" name="Pill" gid="18" x="544" y="480" width="32" height="32"/>
+  <object id="857" name="Pill" gid="18" x="576" y="480" width="32" height="32"/>
+  <object id="858" name="Pill" gid="18" x="608" y="480" width="32" height="32"/>
+  <object id="859" name="Pill" gid="18" x="640" y="480" width="32" height="32"/>
+  <object id="860" name="Pill" gid="18" x="672" y="480" width="32" height="32"/>
+  <object id="861" name="Pill" gid="18" x="704" y="480" width="32" height="32"/>
+  <object id="862" name="Pill" gid="18" x="736" y="480" width="32" height="32"/>
+  <object id="863" name="Pill" gid="18" x="736" y="512" width="32" height="32"/>
+  <object id="864" name="Pill" gid="18" x="736" y="544" width="32" height="32"/>
+  <object id="865" name="Pill" gid="18" x="704" y="544" width="32" height="32"/>
+  <object id="866" name="Pill" gid="18" x="672" y="544" width="32" height="32"/>
+  <object id="867" name="Pill" gid="18" x="640" y="544" width="32" height="32"/>
+  <object id="868" name="Pill" gid="18" x="608" y="544" width="32" height="32"/>
+  <object id="869" name="Pill" gid="18" x="576" y="544" width="32" height="32"/>
+  <object id="870" name="Pill" gid="18" x="544" y="544" width="32" height="32"/>
+  <object id="871" name="Pill" gid="18" x="512" y="544" width="32" height="32"/>
+  <object id="872" name="Pill" gid="18" x="480" y="544" width="32" height="32"/>
+  <object id="873" name="Pill" gid="18" x="448" y="544" width="32" height="32"/>
+  <object id="874" name="Pill" gid="18" x="416" y="544" width="32" height="32"/>
+  <object id="875" name="Pill" gid="18" x="384" y="544" width="32" height="32"/>
+  <object id="876" name="Pill" gid="18" x="352" y="544" width="32" height="32"/>
+  <object id="877" name="Pill" gid="18" x="320" y="544" width="32" height="32"/>
+  <object id="878" name="Pill" gid="18" x="288" y="544" width="32" height="32"/>
+  <object id="879" name="Pill" gid="18" x="256" y="544" width="32" height="32"/>
+  <object id="880" name="Pill" gid="18" x="224" y="544" width="32" height="32"/>
+  <object id="881" name="Pill" gid="18" x="192" y="544" width="32" height="32"/>
+  <object id="882" name="Pill" gid="18" x="160" y="544" width="32" height="32"/>
+  <object id="883" name="Pill" gid="18" x="128" y="544" width="32" height="32"/>
+  <object id="884" name="Pill" gid="18" x="96" y="544" width="32" height="32"/>
+  <object id="885" name="Pill" gid="18" x="64" y="544" width="32" height="32"/>
+  <object id="886" name="Pill" gid="18" x="32" y="544" width="32" height="32"/>
+  <object id="888" name="Pill" gid="18" x="320" y="416" width="32" height="32"/>
+  <object id="889" name="Pill" gid="18" x="352" y="416" width="32" height="32"/>
+  <object id="896" name="Ghost" gid="18" x="320" y="352" width="32" height="32"/>
+  <object id="898" name="Pill" gid="18" x="416" y="512" width="32" height="32"/>
+  <object id="899" name="Pill" gid="18" x="416" y="480" width="32" height="32"/>
+  <object id="900" name="Pill" gid="18" x="448" y="480" width="32" height="32"/>
+  <object id="901" name="Pill" gid="18" x="480" y="480" width="32" height="32"/>
+  <object id="902" name="Pill" gid="18" x="480" y="448" width="32" height="32"/>
+  <object id="903" name="Pill" gid="18" x="512" y="416" width="32" height="32"/>
+  <object id="904" name="Ghost" gid="18" x="384" y="256" width="32" height="32"/>
+  <object id="905" name="Ghost" gid="18" x="384" y="352" width="32" height="32"/>
+  <object id="906" name="Ghost" gid="18" x="448" y="352" width="32" height="32"/>
+  <object id="907" name="Pill" gid="19" x="160" y="64" width="32" height="32"/>
+  <object id="908" name="Pill" gid="19" x="160" y="96" width="32" height="32"/>
+  <object id="909" name="RightPoint" gid="18" x="800" y="352" width="32" height="32"/>
+  <object id="910" name="LeftPoint" gid="18" x="-32" y="352" width="32" height="32"/>
  </objectgroup>
 </map>

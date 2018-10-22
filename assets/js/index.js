@@ -1,7 +1,8 @@
 import Player  from "./player.js";
+import Ghost  from "./ghost.js";
         
 let width = 800;
-let height = 600;
+let height = 625;
 let gridSize = 32;
 let offset=parseInt(gridSize/2);
 let config = {
@@ -28,134 +29,338 @@ let config = {
 let game = new Phaser.Game(config);
 let cursors;
 let player;
+let ghosts=[];
+let pills;
+let pillsCount=0;
+let pillsAte=0;
 let map;
-let wallsLayer;
-let directions=[];
-let turningPoint = new Phaser.Geom.Point();
+let layer1;
+let layer2;
 let graphics;
-const spritesheetPath = 'assets/images/pacmansprites.png';
-const tilesPath = 'assets/images/background.png';
-const mapPath = 'assets/levels/codepen-level.json';
+let scoreText;
+let livesImage=[];
+let tiles = "pacman-tiles";
+let spritesheet = 'pacman-spritesheet';
+let spritesheetPath = 'assets/images/pacmansprites.png';
+let tilesPath = 'assets/images/background.png';
+let mapPath = 'assets/levels/codepen-level.json';
+let Animation= {
+    Player : {
+        Eat: 'player-eat',
+        Stay: 'player-stay',
+        Die: 'player-die'
+    },
+    Ghost :{
+        Blue : {
+            Move: 'ghost-blue-move',
+        },
+
+        Orange : {
+            Move: 'ghost-orange-move',
+        },
+
+        White : {
+            Move: 'ghost-white-move',
+        },
+
+        Pink : {
+            Move: 'ghost-pink-move',
+        },
+
+        Red : {
+            Move: 'ghost-red-move',
+        },
+    }
+};
 
 function preload ()
 {
-    this.load.spritesheet('pacman-spritesheet', spritesheetPath, { frameWidth: gridSize, frameHeight: gridSize });
+    this.load.spritesheet(spritesheet, spritesheetPath, { frameWidth: gridSize, frameHeight: gridSize });
     this.load.tilemapTiledJSON("map", mapPath);
-    this.load.image("pacman-tiles", tilesPath);
+    this.load.image(tiles, tilesPath);
     this.load.image("pill", "assets/images/pac man pill/spr_pill_0.png");
+    this.load.image("lifecounter", "assets/images/pac man life counter/spr_lifecounter_0.png");
 }
 
 function create ()
-{
-    map = this.make.tilemap({ key: "map", tileWidth: gridSize, tileHeight: gridSize });
-    const tileset = map.addTilesetImage("pacman-tiles");
-    
-    wallsLayer = map.createStaticLayer("Walls", tileset, 0, 0);
-    wallsLayer.setCollisionByProperty({ collides: true});
+{    
+    this.anims.create({
+            key: Animation.Player.Eat,
+            frames: this.anims.generateFrameNumbers(spritesheet, { start: 9, end: 13 }),
+            frameRate: 10,
+            repeat: -1
+        });
 
+    this.anims.create({
+        key: Animation.Player.Stay,
+        frames: [ { key: spritesheet, frame: 9 } ],
+        frameRate: 20
+    });
+
+    this.anims.create({
+        key: Animation.Player.Die,
+        frames: this.anims.generateFrameNumbers(spritesheet, { start: 6, end: 8 }),
+        frameRate: 1
+    });
+
+    this.anims.create({
+            key: Animation.Ghost.Blue.Move,
+            frames: this.anims.generateFrameNumbers(spritesheet, { start: 0, end: 1 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+    this.anims.create({
+            key: Animation.Ghost.Orange.Move,
+            frames: this.anims.generateFrameNumbers(spritesheet, { start: 4, end: 5 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+    this.anims.create({
+            key: Animation.Ghost.White.Move,
+            frames: this.anims.generateFrameNumbers(spritesheet, { start: 4, end: 5 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+    this.anims.create({
+            key: Animation.Ghost.Pink.Move,
+            frames: this.anims.generateFrameNumbers(spritesheet, { start: 14, end: 15 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+    this.anims.create({
+            key: Animation.Ghost.Red.Move,
+            frames: this.anims.generateFrameNumbers(spritesheet, { start: 16, end: 17 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+    map = this.make.tilemap({ key: "map", tileWidth: gridSize, tileHeight: gridSize });
+    const tileset = map.addTilesetImage(tiles);
     
-    const spawnPoint = map.findObject("Objects", obj => obj.name === "Player");  
+    layer1 = map.createStaticLayer("Layer 1", tileset, 0, 0);
+    layer1.setCollisionByProperty({ collides: true});
+
+    layer2 = map.createStaticLayer("Layer 2", tileset, 0, 0);
+    layer2.setCollisionByProperty({ collides: true});
+    
+    let spawnPoint = map.findObject("Objects", obj => obj.name === "Player");  
     spawnPoint.x += offset;
     spawnPoint.y -= offset;
-    player = new Player(this, 'pacman-spritesheet', spawnPoint);
-
-    let pills = this.physics.add.group();
-    map.forEachTile((value, index, array) => {
-        if(value.index===-1 && value.x>0 && value.x<24)
-        {
-            let pill=this.physics.add
-                .sprite(value.pixelX + offset, value.pixelY + offset, "pill");
-            pills.add(pill);
+    player = new Player(this, spawnPoint, Animation.Player, function() {
+        if(player.life <= 0) {
+            newGame();
+        }
+        else {
+            respawn();
         }
     });
 
+    let scene = this;
 
-    this.physics.add.collider(player.sprite, wallsLayer);
+    pills = this.physics.add.group();
+    map.filterObjects("Objects", function (value, index, array) {
+        if(value.name == "Pill") {
+            let pill=scene.physics.add
+                .sprite(value.x + offset, value.y - offset, "pill");
+            pills.add(pill);
+            pillsCount++;
+        }
+    });
+
+    
+    let ghostsGroup = this.physics.add.group();
+    let i=0;
+    let skins=[Animation.Ghost.Blue, Animation.Ghost.Red, Animation.Ghost.Orange , Animation.Ghost.Pink];
+     map.filterObjects("Objects", function (value, index, array) {        
+        if(value.name == "Ghost") {
+            let spawnPoint = new Phaser.Geom.Point(value.x, value.y);  
+            spawnPoint.x += offset;
+            spawnPoint.y -= offset;
+            let ghost = new Ghost(scene, spawnPoint, skins[i]);
+            ghosts.push(ghost);    
+            ghostsGroup.add(ghost.sprite);
+            i++;
+        }
+     });
+
+    this.physics.add.collider(player.sprite, layer1);
+    this.physics.add.collider(player.sprite, layer2);
+    this.physics.add.collider(ghostsGroup, layer1);
     this.physics.add.overlap(player.sprite, pills, function(sprite, pill) {        
-        pill.destroy();
+        pill.disableBody(true, true);
+        pillsAte++;
+        player.score+=10;
+        if(pillsCount==pillsAte) {
+            reset();
+        }
+    }, null, this);
+
+    this.physics.add.overlap(player.sprite, ghostsGroup, function(sprite, ghostSprite) {
+        if(player.active) {
+            player.die();
+            for(let ghost of ghosts) {
+                ghost.freeze();
+            }   
+        }
     }, null, this);
 
     cursors= this.input.keyboard.createCursorKeys();
 
-     graphics = this.add.graphics();
+    graphics = this.add.graphics();
+
+    scoreText =  this.add.text(25, 595, 'Score: '+player.score).setFontFamily('Arial').setFontSize(18).setColor('#ffffff');
+    this.add.text(630, 595, 'Lives:').setFontFamily('Arial').setFontSize(18).setColor('#ffffff');
+    for (let i =  0; i < player.life; i++) {
+        livesImage.push(this.add.image(700 + (i * 25), 605, 'lifecounter'));
+    }
+}
+
+function respawn() {
+    player.respawn();
+    for(let ghost of ghosts) {
+            ghost.respawn();
+        }    
+}
+
+function reset() {
+    for (let child of pills.getChildren()) {
+            child.enableBody(false, child.x, child.y, true, true);
+        }
+    pillsAte=0;
+    respawn();
+}
+
+function newGame() {
+    reset();
+    player.life=3;
+    player.score=0;
+    for (let i = 0; i < player.life; i++) {
+        let image = livesImage[i];
+        if(image) {
+            image.alpha=1;
+        }
+    }
 }
 
 function update()
 {
-    let currentTile = map.getTileAtWorldXY(player.sprite.x, player.sprite.y, true);  
-    if(currentTile) {
+    player.setDirections(getDirection(map, layer1, player.sprite));
 
-        var x = currentTile.x;
-        var y = currentTile.y;
-
-        directions[Phaser.LEFT]     =   map.getTileAt(x-1, y, true, wallsLayer);
-        directions[Phaser.RIGHT]    =   map.getTileAt(x+1, y, true, wallsLayer);
-        directions[Phaser.UP]       =   map.getTileAt(x, y-1, true, wallsLayer);
-        directions[Phaser.DOWN]     =   map.getTileAt(x, y+1, true, wallsLayer);
-
-        player.setDirections(directions);
-
-        turningPoint.x = currentTile.pixelX + offset;
-        turningPoint.y = currentTile.pixelY + offset;
-
-        if (cursors.left.isDown)
-        {
-            player.setTurn(Phaser.LEFT, turningPoint);
-        }
-        else if (cursors.right.isDown)
-        {
-            player.setTurn(Phaser.RIGHT, turningPoint);
-        }   
-        else if (cursors.up.isDown)
-        {
-            player.setTurn(Phaser.UP, turningPoint);
-        }
-        else if (cursors.down.isDown)
-        {
-            player.setTurn(Phaser.DOWN, turningPoint);
-        }
-        else
-        {
-            player.setTurn(Phaser.None);   
-        }
-
-        player.update();  
+    if(!player.playing) {
+        for(let ghost of ghosts) {
+            ghost.freeze();
+        }        
     }
+
+    for(let ghost of ghosts) {
+        ghost.setDirections(getDirection(map, layer1, ghost.sprite));
+    }
+
+    player.setTurningPoint(getTurningPoint(map, player.sprite));
+
+    for(let ghost of ghosts) {
+        ghost.setTurningPoint(getTurningPoint(map, ghost.sprite));
+    }
+
+    if (cursors.left.isDown)
+    {
+        player.setTurn(Phaser.LEFT);
+    }
+    else if (cursors.right.isDown)
+    {
+        player.setTurn(Phaser.RIGHT);
+    }   
+    else if (cursors.up.isDown)
+    {
+        player.setTurn(Phaser.UP);
+    }
+    else if (cursors.down.isDown)
+    {
+        player.setTurn(Phaser.DOWN);
+    }
+    else
+    {
+        player.setTurn(Phaser.NONE);   
+    }
+
+    player.update();  
+
+    for(let ghost of ghosts) {
+        ghost.update();
+    }
+
+    scoreText.setText('Score: '+player.score);
+
+    for (let i = player.life; i < 3; i++) {
+        let image = livesImage[i];
+        if(image) {
+            image.alpha=0;
+        }
+    }
+
+    if(player.active) {
+        if(player.sprite.x < 0 ) {
+            let spawnPoint = map.findObject("Objects", obj => obj.name === "RightPoint");  
+            spawnPoint.x += offset;
+            spawnPoint.y -= offset;
+            player.sprite.setPosition(spawnPoint.x, spawnPoint.y);
+        }
+        else if(player.sprite.x> width) {
+            let spawnPoint = map.findObject("Objects", obj => obj.name === "LeftPoint");  
+            spawnPoint.x += offset;
+            spawnPoint.y += offset;
+            player.sprite.setPosition(spawnPoint.x, spawnPoint.y);
+        }
+    }
+    
 
     //drawDebug();
 }
 
 function drawDebug() {
-
     graphics.clear();
-
-    let thickness = 4;
-    let alpha = 1;
-    let color = 0x00ff00;
-
-    for (var t = 0; t < 9; t++)
-    {
-        if (directions[t] === null || directions[t] === undefined)
-        {
-            continue;
+    player.drawDebug(graphics);
+    for(let ghost of ghosts) {
+            ghost.drawDebug(graphics);
         }
+}
 
-        if (directions[t].index !== -1)
-        {
-            color = 0xff0000;
-        }
-        else
-        {
-            color = 0x00ff00;
-        }
+function getDirection(map, layer, sprite) {
+    let directions = [];
+    let sx=Phaser.Math.FloorTo(sprite.x);
+    let sy=Phaser.Math.FloorTo(sprite.y);
+    let currentTile = map.getTileAtWorldXY(sx, sy, true);  
+    if(currentTile) {
 
-        graphics.lineStyle(thickness, color, alpha);
-        graphics.strokeRect(directions[t].pixelX, directions[t].pixelY, 32, 32);
+        var x = currentTile.x;
+        var y = currentTile.y;
+
+        directions[Phaser.LEFT]     =   map.getTileAt(x-1, y, true, layer);
+        directions[Phaser.RIGHT]    =   map.getTileAt(x+1, y, true, layer);
+        directions[Phaser.UP]       =   map.getTileAt(x, y-1, true, layer);
+        directions[Phaser.DOWN]     =   map.getTileAt(x, y+1, true, layer);
+
     }
 
-    color = 0x00ff00;
-    graphics.lineStyle(thickness, color, alpha);
-    graphics.strokeRect(player.turningPoint.x, player.turningPoint.y, 1, 1);
-
+    return directions;
 }
+
+function getTurningPoint(map, sprite) {
+    let turningPoint = new Phaser.Geom.Point();
+    let sx=Phaser.Math.FloorTo(sprite.x);
+    let sy=Phaser.Math.FloorTo(sprite.y);
+    let currentTile = map.getTileAtWorldXY(sx, sy, true);  
+    if(currentTile) {    
+        turningPoint.x = currentTile.pixelX + offset;
+        turningPoint.y = currentTile.pixelY + offset;
+    }
+
+    return turningPoint;
+}
+
+
       
