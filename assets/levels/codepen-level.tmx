@@ -284,7 +284,5 @@
   <object id="906" name="Ghost" gid="18" x="448" y="352" width="32" height="32"/>
   <object id="907" name="Pill" gid="19" x="160" y="64" width="32" height="32"/>
   <object id="908" name="Pill" gid="19" x="160" y="96" width="32" height="32"/>
-  <object id="909" name="RightPoint" gid="18" x="800" y="352" width="32" height="32"/>
-  <object id="910" name="LeftPoint" gid="18" x="-32" y="352" width="32" height="32"/>
  </objectgroup>
 </map>

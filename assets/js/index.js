@@ -148,9 +148,8 @@ function create ()
     layer2.setCollisionByProperty({ collides: true});
     
     let spawnPoint = map.findObject("Objects", obj => obj.name === "Player");  
-    spawnPoint.x += offset;
-    spawnPoint.y -= offset;
-    player = new Player(this, spawnPoint, Animation.Player, function() {
+    let position = new Phaser.Geom.Point(spawnPoint.x + offset, spawnPoint.y - offset);
+    player = new Player(this, position, Animation.Player, function() {
         if(player.life <= 0) {
             newGame();
         }
@@ -177,10 +176,8 @@ function create ()
     let skins=[Animation.Ghost.Blue, Animation.Ghost.Red, Animation.Ghost.Orange , Animation.Ghost.Pink];
      map.filterObjects("Objects", function (value, index, array) {        
         if(value.name == "Ghost") {
-            let spawnPoint = new Phaser.Geom.Point(value.x, value.y);  
-            spawnPoint.x += offset;
-            spawnPoint.y -= offset;
-            let ghost = new Ghost(scene, spawnPoint, skins[i]);
+            let position = new Phaser.Geom.Point(value.x + offset, value.y - offset);
+            let ghost = new Ghost(scene, position, skins[i]);
             ghosts.push(ghost);    
             ghostsGroup.add(ghost.sprite);
             i++;
@@ -303,17 +300,11 @@ function update()
     }
 
     if(player.active) {
-        if(player.sprite.x < 0 ) {
-            let spawnPoint = map.findObject("Objects", obj => obj.name === "RightPoint");  
-            spawnPoint.x += offset;
-            spawnPoint.y -= offset;
-            player.sprite.setPosition(spawnPoint.x, spawnPoint.y);
+        if(player.sprite.x < 0 - offset ) {            
+            player.sprite.setPosition(width + offset, player.sprite.y);
         }
-        else if(player.sprite.x> width) {
-            let spawnPoint = map.findObject("Objects", obj => obj.name === "LeftPoint");  
-            spawnPoint.x += offset;
-            spawnPoint.y += offset;
-            player.sprite.setPosition(spawnPoint.x, spawnPoint.y);
+        else if(player.sprite.x> width + offset) {
+            player.sprite.setPosition(0 - offset, player.sprite.y);
         }
     }
     
