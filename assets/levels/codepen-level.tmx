@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="25" height="18" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#ffffff" nextobjectid="911">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="25" height="18" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#ffffff" nextobjectid="912">
  <tileset firstgid="1" name="pacman-tiles" tilewidth="32" tileheight="32" tilecount="20" columns="5">
   <image source="../images/background.png" width="160" height="128"/>
   <tile id="0">
@@ -284,5 +284,6 @@
   <object id="906" name="Ghost" gid="18" x="448" y="352" width="32" height="32"/>
   <object id="907" name="Pill" gid="19" x="160" y="64" width="32" height="32"/>
   <object id="908" name="Pill" gid="19" x="160" y="96" width="32" height="32"/>
+  <object id="911" name="Pill" gid="18" x="576" y="128" width="32" height="32"/>
  </objectgroup>
 </map>

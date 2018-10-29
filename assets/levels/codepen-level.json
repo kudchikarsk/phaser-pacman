@@ -2189,6 +2189,18 @@
                  "width":32,
                  "x":160,
                  "y":96
+                }, 
+                {
+                 "gid":18,
+                 "height":32,
+                 "id":911,
+                 "name":"Pill",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":576,
+                 "y":128
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2196,7 +2208,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":911,
+ "nextobjectid":912,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
